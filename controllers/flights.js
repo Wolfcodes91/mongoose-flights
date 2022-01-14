@@ -13,6 +13,7 @@ function index(req, res) {
     });
   }
 function create(req, res) {
+    req.body.departs = req.body.departs || undefined;
     // remove leading and trailing spaces
     req.body.airline = req.body.airline.trim();
     req.body.airport = req.body.airport.trim();
