@@ -6,6 +6,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 h1 {
   padding: 5vmin;
@@ -30,7 +31,12 @@ nav {
   border-radius: 5px;
 }
 #button:hover {
-  background-color: gray;
-  
+  background-color: gray; 
 }
-
+thead {
+  text-align: center;
+}
+td {  
+  text-align: center;
+  width: 500px;
+}
