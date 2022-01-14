@@ -2,9 +2,16 @@ const Flight = require('../models/flight');
 
 module.exports = {
     new: newFlight,
-    create
+    create,
+    index,
 };
 
+function index(req, res) {
+    Flight.find({}, function(err, flights) {
+      if (err) return res.redirect('/');
+      res.render('flights/index', { flights });
+    });
+  }
 function create(req, res) {
     // remove leading and trailing spaces
     req.body.airline = req.body.airline.trim();
@@ -15,7 +22,7 @@ function create(req, res) {
       // one way to handle errors
       if (err) return res.render('flights/new');
       console.log(flight);
-      res.redirect('/flights/new'); /// change after adding index page
+      res.redirect('/flights/'); /// change after adding index page
     });
    }
    
