@@ -4,6 +4,7 @@ module.exports = {
     new: newFlight,
     create,
     index,
+    show,
 };
 
 function index(req, res) {
@@ -15,8 +16,6 @@ function index(req, res) {
 function create(req, res) {
     req.body.departs = req.body.departs || undefined;
     // remove leading and trailing spaces
-    req.body.airline = req.body.airline.trim();
-    req.body.airport = req.body.airport.trim();
     req.body.flightNo = req.body.flightNo.trim();
     const flight = new Flight(req.body);
     flight.save(function(err) {
@@ -29,4 +28,10 @@ function create(req, res) {
    
 function newFlight(req, res) {
 	res.render('flights/new')
+}
+
+function show(req, res) {
+  Flight.findById(req.params.id, function(err, flight) {
+    res.render('flights/show', {flight}); 
+  })
 }
