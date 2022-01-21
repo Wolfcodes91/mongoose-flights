@@ -15,15 +15,10 @@ function index(req, res) {
     });
   }
 function create(req, res) {
-    // req.body.departs = req.body.departs;
-    // remove leading and trailing spaces
-    req.body.flightNo = req.body.flightNo.trim();
     const flight = new Flight(req.body);
     flight.save(function(err) {
-      // one way to handle errors
       if (err) return res.render('flights/new');
-      console.log(flight);
-      res.redirect('/flights/'); /// change after adding index page
+      res.redirect('/flights/'); 
     });
    }
    
