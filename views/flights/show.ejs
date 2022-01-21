@@ -55,9 +55,48 @@
 		</select>
 	  </label><br>
     <span>Arrival Date: </span>
-    <input type="datetime-local" name="arrival"> 
+    <input type="datetime-local" required name="arrival"> 
     <br>
-	<input type="submit" value="Add Flight" id="button">
+	<input type="submit" value="Add Destination" id="button">
+	
+</form>
+
+<h2>Tickets:</h2>
+<% if (tickets.length) { %>
+    <table>
+        <thead>
+            <tr>
+                <th>Seat Number:</th>
+                <th>Price:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% tickets.forEach(function(t) { %>
+                <tr>
+                    <td>
+                        <%= t.seat %>
+                    </td>
+                    <td>
+                        <%= t.price %>
+                    </td>
+                </tr>
+                <% }); %>
+        </tbody>
+    </table>
+    <% } else { %>
+    <h5>No Tickets Yet</h5>
+    <% } %>
+
+<h2>Purchase Ticket</h2>
+<form action="/flights/<%= flight._id %>/tickets" method="POST" class="purchaseForm">
+	  <label>Seat: (A-F, 1-99)
+      <input name="seat" required pattern="[A-F][1-9]\d?">
+	  </label><br>
+    <span>Price: </span>
+    <input type="number" name="price"> 
+    <br>
+	<input type="submit" value="Buy Ticket" id="button">
+	
 </form>
 
 <%- include('../partials/footer') %>

@@ -44,7 +44,7 @@ td {
   width: 500px;
 }
 
-.destForm, .bookFlight {
+.destForm, .bookFlight, .purchaseForm {
   display: flex;
   flex-direction: column;
 }
